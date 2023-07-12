@@ -1,23 +1,21 @@
 class Solution {
     public List<List<Integer>> subsets(int[] nums) {
-        int n=nums.length;
-        List<List<Integer>> answer =new ArrayList<List<Integer>>();
-        List<Integer>result=new ArrayList<>();
-        find(answer,result,0,nums,n);
-        return answer;
+        List<Integer> answer=new ArrayList<>();
+        List<List<Integer>> result = new ArrayList<List<Integer>>();
+        find(answer,result,nums,0);
+        return result;
     }
-    public static void find(List<List<Integer>> answer,List<Integer> result,int first,int[] nums,int n)
+    public static void find(List<Integer>answer,List<List<Integer>> result,int[] nums,int i)
     {
-        if(first>=n)
+        if(i==nums.length)
         {
-            answer.add(new ArrayList<>(result));
+            result.add(new ArrayList<>(answer));
             return;
         }
-        result.add(nums[first]);
-        find(answer,result,first+1,nums,n);
-        result.remove(result.size()-1);
-        find(answer,result,first+1,nums,n);
+        answer.add(nums[i]);
+        find(answer,result,nums,i+1);
+        answer.remove(answer.size()-1);
+        find(answer,result,nums,i+1);
         
     }
-   
 }
