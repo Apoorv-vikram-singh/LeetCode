@@ -1,16 +1,19 @@
 class Solution {
     public int removeDuplicates(int[] nums) {
-         int count = 0;
-        // Loop for all the elements in the array
-        for (int i = 0; i < nums.length; i++) {
-            // If the current element is equal to the next element, we skip
-            if (i < nums.length - 1 && nums[i] == nums[i + 1]) {
+        int count=0;
+        int k=0;
+        for(int i=0;i<nums.length;i++)
+        {
+            if(i<nums.length-1 && nums[i]==nums[i+1])
+            {
                 continue;
             }
-            //through i<nums.length because last element automatically add ho jaye ..
-            // We will update the array in place
-            nums[count] = nums[i];
-            count++;
+            else
+            {
+                nums[k]=nums[i];
+                k++;
+                count++;
+            }
         }
         return count;
     }
